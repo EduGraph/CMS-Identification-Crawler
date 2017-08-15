@@ -11,11 +11,19 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
-import read.frontend.presentation.Models.CMS;
-import read.frontend.presentation.Models.CMSAnzahl;
+import read.frontend.presentation.Queries.CMSVerbreitung;
+import read.frontend.presentation.Resolver.IQueryResolver;
+import read.frontend.presentation.Resolver.QueryResolver;
 
 @Path("/json")
 public class FrontController {
+	
+	private IQueryResolver resolver;
+	
+	public FrontController() {
+		resolver = new QueryResolver();
+	}
+	
 	@GET
 	@Path("/test")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -28,11 +36,7 @@ public class FrontController {
 	@Path("/anzahlderverwendetencms")
 	@Produces(MediaType.APPLICATION_JSON)
 	public AnzahlDerVerwendetenCMS serviceAnzahlDerVerwendetenCMS() {
-		List<CMSAnzahl> cmsVerbreitung = new ArrayList<>();
-		cmsVerbreitung.add(new CMSAnzahl(CMS.Typo3, 200));
-		cmsVerbreitung.add(new CMSAnzahl(CMS.Drupal, 7));
-		cmsVerbreitung.add(new CMSAnzahl(CMS.Imperia, 2));
-		return new AnzahlDerVerwendetenCMS(cmsVerbreitung);
+		return (AnzahlDerVerwendetenCMS)resolver.Resolve(new CMSVerbreitung());
 	}
 	
 }

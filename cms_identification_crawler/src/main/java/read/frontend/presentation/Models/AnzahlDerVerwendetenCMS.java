@@ -2,7 +2,9 @@ package read.frontend.presentation.Models;
 
 import java.util.List;
 
-public class AnzahlDerVerwendetenCMS {
+import read.frontend.presentation.Results.IResult;
+
+public class AnzahlDerVerwendetenCMS implements IResult{
 	private List<CMSAnzahl> cmsVerbreitung;
 
 	public AnzahlDerVerwendetenCMS(List<CMSAnzahl> cmsVerbreitung) {
