@@ -1,7 +1,7 @@
 package read.frontend.presentation.Models;
 
 public enum CMS {
-	Contano, Drupal, Egotec, ExpressionEngine, Imperia, OpenCMS, ProcessWire, PyroCMS, UnbekanntesCMS, SharePoint, Typo3;
+	Contano, Drupal, Egotec, ExpressionEngine, Imperia, OpenCMS, ProcessWire, PyroCMS, UnbekanntesCMS, SharePoint, Typo3, WordPress;
 
 	public boolean isUnbekannt() {
 		return this == CMS.UnbekanntesCMS;
