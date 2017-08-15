@@ -1,10 +1,10 @@
 package read.frontend.presentation.Models;
 
-public class CMSCount {
+public class CMSAnzahl {
 	private CMS cms;
 	private int anzahl;
-	
-	public CMSCount(CMS cms, int anzahl) {
+
+	public CMSAnzahl(CMS cms, int anzahl) {
 		super();
 		this.cms = cms;
 		this.anzahl = anzahl;
@@ -17,4 +17,5 @@ public class CMSCount {
 	public int getAnzahl() {
 		return anzahl;
 	}
+
 }
