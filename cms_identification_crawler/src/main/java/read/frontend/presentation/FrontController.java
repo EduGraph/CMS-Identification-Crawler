@@ -12,8 +12,10 @@ import javax.ws.rs.core.Response;
 
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
 import read.frontend.presentation.Models.CMSDerHochschulen;
+import read.frontend.presentation.Models.VeraenderungAktuelleWoche;
 import read.frontend.presentation.Queries.CMSHochschulen;
 import read.frontend.presentation.Queries.CMSVerbreitung;
+import read.frontend.presentation.Queries.VeraenderungWoche;
 import read.frontend.presentation.Resolver.IQueryResolver;
 import read.frontend.presentation.Resolver.QueryResolver;
 
@@ -46,6 +48,13 @@ public class FrontController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public CMSDerHochschulen serviceCmsDerHochschulen() {
 		return (CMSDerHochschulen)resolver.Resolve(new CMSHochschulen());
+	}
+	
+	@GET
+	@Path("/veraenderungaktuellewoche")
+	@Produces(MediaType.APPLICATION_JSON)
+	public VeraenderungAktuelleWoche serviceVeraenderungAktuelleWoche() {
+		return (VeraenderungAktuelleWoche)resolver.Resolve(new VeraenderungWoche());
 	}
 	
 }

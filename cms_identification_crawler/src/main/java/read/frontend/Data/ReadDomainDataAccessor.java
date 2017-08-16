@@ -13,6 +13,8 @@ import read.frontend.presentation.Models.CMS;
 import read.frontend.presentation.Models.CMSAnzahl;
 import read.frontend.presentation.Models.CMSDerHochschulen;
 import read.frontend.presentation.Models.HochschuleCMS;
+import read.frontend.presentation.Models.VeraenderungAktuelleWoche;
+import read.frontend.presentation.Models.VeraenderungWoche;
 
 public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
 	private JdbcTemplate JdbcTemplate;
@@ -41,6 +43,24 @@ public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
 		return new CMSDerHochschulen(cmsDerHochschulen);
 	}
 	
+	@Override
+	public VeraenderungAktuelleWoche GetVeraenderungAktulleWoche() {
+		String sql = "SELECT CMS, Veraenderung FROM veraenderungaktuellewoche";
+		List<VeraenderungWoche> veraenderungWoche = this.JdbcTemplate.query(sql, new VeraenderungWocheMapper());
+		return new VeraenderungAktuelleWoche(veraenderungWoche);
+	}
+
+	private static final class VeraenderungWocheMapper implements RowMapper<VeraenderungWoche>{
+
+		@Override
+		public VeraenderungWoche mapRow(ResultSet rs, int rowNum) throws SQLException {
+			String cms = rs.getString("CMS");
+			int veraenderung = rs.getInt("Veraenderung");
+			return new VeraenderungWoche(CMS.valueOf(cms), veraenderung);
+		}
+		
+	}
+	
 	private static final class CMSAnzahlCMSMapper implements RowMapper<CMSAnzahl>{
 
 		@Override
@@ -62,5 +82,4 @@ public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
 		}
 		
 	}
-
 }
