@@ -11,6 +11,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
 import read.frontend.presentation.Models.CMS;
 import read.frontend.presentation.Models.CMSAnzahl;
+import read.frontend.presentation.Models.CMSDerHochschulen;
+import read.frontend.presentation.Models.HochschuleCMS;
 
 public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
 	private JdbcTemplate JdbcTemplate;
@@ -27,10 +29,16 @@ public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
 
 	@Override
 	public AnzahlDerVerwendetenCMS GetAnzahlDerVerwendetenCMS() {
-
 		String sql = "SELECT CMS, Anzahl FROM anzahlderverwendetencms";
 		List<CMSAnzahl> cmsVerbreitung = this.JdbcTemplate.query(sql, new CMSAnzahlCMSMapper());
 		return new AnzahlDerVerwendetenCMS(cmsVerbreitung);
+	}
+
+	@Override
+	public CMSDerHochschulen GetCMSDerHochschulen() {
+		String sql = "SELECT Hochschule, CMS FROM cmsderhochschulen";
+		List<HochschuleCMS> cmsDerHochschulen = this.JdbcTemplate.query(sql, new HochschuleCMSMapper());
+		return new CMSDerHochschulen(cmsDerHochschulen);
 	}
 	
 	private static final class CMSAnzahlCMSMapper implements RowMapper<CMSAnzahl>{
@@ -40,6 +48,17 @@ public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
 			String cms = rs.getString("CMS");
 			int anzahl = rs.getInt("Anzahl");
 			return new CMSAnzahl(CMS.valueOf(cms), anzahl);
+		}
+		
+	}
+	
+	private static final class HochschuleCMSMapper implements RowMapper<HochschuleCMS>{
+
+		@Override
+		public HochschuleCMS mapRow(ResultSet rs, int rowNum) throws SQLException {
+			String cms = rs.getString("CMS");
+			String hochschule = rs.getString("Hochschule");
+			return new HochschuleCMS(hochschule, CMS.valueOf(cms));
 		}
 		
 	}

@@ -11,6 +11,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
+import read.frontend.presentation.Models.CMSDerHochschulen;
+import read.frontend.presentation.Queries.CMSHochschulen;
 import read.frontend.presentation.Queries.CMSVerbreitung;
 import read.frontend.presentation.Resolver.IQueryResolver;
 import read.frontend.presentation.Resolver.QueryResolver;
@@ -37,6 +39,13 @@ public class FrontController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public AnzahlDerVerwendetenCMS serviceAnzahlDerVerwendetenCMS() {
 		return (AnzahlDerVerwendetenCMS)resolver.Resolve(new CMSVerbreitung());
+	}
+	
+	@GET
+	@Path("/cmsderhochschulen")
+	@Produces(MediaType.APPLICATION_JSON)
+	public CMSDerHochschulen serviceCmsDerHochschulen() {
+		return (CMSDerHochschulen)resolver.Resolve(new CMSHochschulen());
 	}
 	
 }
