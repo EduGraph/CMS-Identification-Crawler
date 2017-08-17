@@ -2,7 +2,7 @@ package read.frontend.presentation.Models;
 
 import java.util.List;
 
-import read.frontend.presentation.Results.IResult;
+import crosscutting.query.IResult;
 
 public class CMSDerHochschulen implements IResult {
 	private List<HochschuleCMS> cmsDerHochschulen;

@@ -10,14 +10,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import crosscutting.query.IQueryResolver;
+import crosscutting.query.QueryResolver;
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
 import read.frontend.presentation.Models.CMSDerHochschulen;
 import read.frontend.presentation.Models.VeraenderungAktuelleWoche;
 import read.frontend.presentation.Queries.CMSHochschulen;
 import read.frontend.presentation.Queries.CMSVerbreitung;
 import read.frontend.presentation.Queries.VeraenderungWoche;
-import read.frontend.presentation.Resolver.IQueryResolver;
-import read.frontend.presentation.Resolver.QueryResolver;
 
 @Path("/json")
 public class FrontController {

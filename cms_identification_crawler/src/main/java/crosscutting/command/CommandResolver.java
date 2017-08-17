@@ -1,23 +1,22 @@
-package read.frontend.presentation.Resolver;
+package crosscutting.command;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import crosscutting.query.IQueryHandler;
+import crosscutting.query.IResult;
 
-import read.frontend.presentation.Queries.IQuery;
-import read.frontend.presentation.Queries.IQueryHandler;
-import read.frontend.presentation.Results.IResult;
+public class CommandResolver implements ICommandResolver {
 
-public class QueryResolver implements IQueryResolver {
-
-	public IResult Resolve(IQuery query) {
-		String queryName = query.getClass().getName();
-		String queryHandlerName = queryName + "Handler";
+	@Override
+	public void handle(ICommand command) {
+		String commandName = command.getClass().getName();
+		String commandHandlerName = commandName + "Handler";
 		try {
-			Class<?> clazz = Class.forName(queryHandlerName);
+			Class<?> clazz = Class.forName(commandHandlerName);
 			Constructor<?> constructor = clazz.getConstructor();
-			IQueryHandler handler = (IQueryHandler) constructor.newInstance();
-			return (IResult) handler.handle(query);
+			ICommandHandler handler = (ICommandHandler) constructor.newInstance();
+			handler.handler(command);
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -40,9 +39,7 @@ public class QueryResolver implements IQueryResolver {
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
-		return null;
+		}
 	}
 
-	
 }
