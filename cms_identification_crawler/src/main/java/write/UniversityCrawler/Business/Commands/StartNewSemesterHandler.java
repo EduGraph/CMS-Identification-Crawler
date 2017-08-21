@@ -16,7 +16,7 @@ public class StartNewSemesterHandler implements ICommandHandler<StartNewSemester
 
 	@Override
 	public void handler(StartNewSemester command) {
-		this.universityAccessor.CreateSemester(new Semester(0, command.getName()));
+		this.universityAccessor.CreateSemester(new Semester(0, command.getName(), command.getCreateTime()));
 	}
 
 }

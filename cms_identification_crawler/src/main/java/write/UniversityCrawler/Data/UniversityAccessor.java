@@ -1,6 +1,8 @@
 package write.UniversityCrawler.Data;
 
-import crosscussting.data.BaseWriteDatabase;
+import java.text.SimpleDateFormat;
+
+import crosscutting.data.BaseWriteDatabase;
 import write.UniversityCrawler.Business.Models.Semester;
 
 public class UniversityAccessor extends BaseWriteDatabase implements IUniversityAccessor{
@@ -11,8 +13,10 @@ public class UniversityAccessor extends BaseWriteDatabase implements IUniversity
 			return;
 		}
 		
-		String sql = "INSERT INTO semester(name) VALUES(?)";
-		this.JdbcTemplate.update(sql, semester.getName());
+		String sql = "INSERT INTO semester(Name, CreateTime) VALUES(?, ?)";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String createTime = sdf.format(semester.getCreateDate());
+		this.JdbcTemplate.update(sql, semester.getName(), createTime);
 	}
 
 }
