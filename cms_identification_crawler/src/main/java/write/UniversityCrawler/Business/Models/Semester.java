@@ -2,7 +2,9 @@ package write.UniversityCrawler.Business.Models;
 
 import java.util.Date;
 
-public class Semester {
+import crosscutting.query.IResult;
+
+public class Semester implements IResult{
 	private int id;
 	private String name;
 	private Date createTime;
