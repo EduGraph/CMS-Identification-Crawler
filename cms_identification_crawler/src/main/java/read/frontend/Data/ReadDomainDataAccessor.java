@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import crosscussting.data.BaseReadDatabase;
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
 import read.frontend.presentation.Models.CMS;
 import read.frontend.presentation.Models.CMSAnzahl;
@@ -16,19 +17,7 @@ import read.frontend.presentation.Models.HochschuleCMS;
 import read.frontend.presentation.Models.VeraenderungAktuelleWoche;
 import read.frontend.presentation.Models.VeraenderungWoche;
 
-public class ReadDomainDataAccessor implements IReadDomainDataAccessor{
-	private JdbcTemplate JdbcTemplate;
-	
-	public ReadDomainDataAccessor() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/cmsidentifier_read");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		
-		this.JdbcTemplate = new JdbcTemplate(dataSource);
-	}
-
+public class ReadDomainDataAccessor extends BaseReadDatabase implements IReadDomainDataAccessor{
 	@Override
 	public AnzahlDerVerwendetenCMS GetAnzahlDerVerwendetenCMS() {
 		String sql = "SELECT CMS, Anzahl FROM anzahlderverwendetencms";

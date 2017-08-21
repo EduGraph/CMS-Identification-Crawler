@@ -3,9 +3,6 @@ package crosscutting.command;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import crosscutting.query.IQueryHandler;
-import crosscutting.query.IResult;
-
 public class CommandResolver implements ICommandResolver {
 
 	@Override
