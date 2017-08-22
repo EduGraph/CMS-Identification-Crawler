@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
-import crosscutting.DataValues.Semester;
+import crosscutting.ValueObjects.SemesterValueObject;
 
 public class SemesterTest {
 	@Test
@@ -16,7 +16,7 @@ public class SemesterTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.AUGUST, 19);
 		
 		// Act
-		Semester semester = new Semester(calendar);
+		SemesterValueObject semester = new SemesterValueObject(calendar);
 		
 		// Assert
 		assertEquals("Sommersemester", semester.getPrefix());
@@ -28,7 +28,7 @@ public class SemesterTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.DECEMBER, 19);
 		
 		// Act
-		Semester semester = new Semester(calendar);
+		SemesterValueObject semester = new SemesterValueObject(calendar);
 		
 		// Assert
 		assertEquals("Wintersemester", semester.getPrefix());
@@ -40,7 +40,7 @@ public class SemesterTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.APRIL, 27);
 		
 		// Act
-		Semester semester = new Semester(calendar);
+		SemesterValueObject semester = new SemesterValueObject(calendar);
 		
 		// Assert
 		assertEquals("2017", semester.getSuffix());
@@ -52,7 +52,7 @@ public class SemesterTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.NOVEMBER, 27);
 		
 		// Act
-		Semester semester = new Semester(calendar);
+		SemesterValueObject semester = new SemesterValueObject(calendar);
 		
 		// Assert
 		assertEquals("2017/2018", semester.getSuffix());
@@ -64,7 +64,7 @@ public class SemesterTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.MAY, 1);
 		
 		// Act
-		Semester semester = new Semester(calendar);
+		SemesterValueObject semester = new SemesterValueObject(calendar);
 		
 		// Assert
 		assertEquals("Sommersemester 2017", semester.name());
@@ -76,7 +76,7 @@ public class SemesterTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.NOVEMBER, 15);
 		
 		// Act
-		Semester semester = new Semester(calendar);
+		SemesterValueObject semester = new SemesterValueObject(calendar);
 		
 		// Assert
 		assertEquals("Wintersemester 2017/2018", semester.name());
@@ -88,8 +88,8 @@ public class SemesterTest {
 		Calendar calendar1 = new GregorianCalendar(2017, Calendar.NOVEMBER, 15);
 		Calendar calendar2 = new GregorianCalendar(2018, Calendar.FEBRUARY, 28);
 		
-		Semester semester1 = new Semester(calendar1);
-		Semester semester2 = new Semester(calendar2);
+		SemesterValueObject semester1 = new SemesterValueObject(calendar1);
+		SemesterValueObject semester2 = new SemesterValueObject(calendar2);
 			
 		// Act
 		boolean result = semester1.equals(semester2);
@@ -104,8 +104,8 @@ public class SemesterTest {
 		Calendar calendar1 = new GregorianCalendar(2017, Calendar.NOVEMBER, 15);
 		Calendar calendar2 = new GregorianCalendar(2019, Calendar.FEBRUARY, 28);
 		
-		Semester semester1 = new Semester(calendar1);
-		Semester semester2 = new Semester(calendar2);
+		SemesterValueObject semester1 = new SemesterValueObject(calendar1);
+		SemesterValueObject semester2 = new SemesterValueObject(calendar2);
 			
 		// Act
 		boolean result = semester1.equals(semester2);

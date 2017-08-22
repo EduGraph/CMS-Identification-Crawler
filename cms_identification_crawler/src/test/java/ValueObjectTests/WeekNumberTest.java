@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import crosscutting.DataValues.WeekNumber;
+import crosscutting.ValueObjects.WeekNumber;
 
 public class WeekNumberTest {
 	@Test

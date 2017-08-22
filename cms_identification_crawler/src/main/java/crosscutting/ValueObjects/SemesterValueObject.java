@@ -1,9 +1,9 @@
-package crosscutting.DataValues;
+package crosscutting.ValueObjects;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class Semester {
+public class SemesterValueObject {
 	private static final int april = 3;
 	private static final int january = 0;
 	private static final int october = 10;
@@ -12,7 +12,7 @@ public class Semester {
 	private String suffix;
 	private Date createTime;
 	
-	public Semester(Calendar calendar) {
+	public SemesterValueObject(Calendar calendar) {
 		this.setPrefix(calendar);
 		this.setSuffix(calendar);		
 		this.setCreateTime(calendar.getTime());
@@ -92,7 +92,7 @@ public class Semester {
 			return false;
 		}
 			
-		Semester other = (Semester)obj;
+		SemesterValueObject other = (SemesterValueObject)obj;
 		
 		if (this.getPrefix().equals(other.getPrefix()) && 
 			this.getSuffix().equals(other.getSuffix())) {

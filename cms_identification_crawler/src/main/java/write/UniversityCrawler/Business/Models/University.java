@@ -1,19 +1,30 @@
 package write.UniversityCrawler.Business.Models;
 
-import java.net.URL;
-
 public class University {
 	private int id;
 	private String Name;
-	private URL Wikipedia_URL;
-	private URL Website_URL;
+	private String WikipediaURL;
+	private String WebsiteURL;
 
-	public University(int id, String name, URL wikipedia_URL, URL website_URL) {
-		super();
+	public University(String name, String wikipediaURL, String websiteURL, int id) {
 		this.id = id;
 		Name = name;
-		Wikipedia_URL = wikipedia_URL;
-		Website_URL = website_URL;
+		WikipediaURL = wikipediaURL;
+		WebsiteURL = websiteURL;
+	}
+	
+	public University(String name, String wikipediaURL, String websiteURL) {
+		Name = name;
+		WikipediaURL = wikipediaURL;
+		WebsiteURL = websiteURL;
+		this.id = 0;
+	}
+	
+	public University(String name, String wikipediaURL) {
+		Name = name;
+		WikipediaURL = wikipediaURL;
+		this.id = 0;
+		WebsiteURL = null;		
 	}
 
 	public int getId() {
@@ -24,11 +35,11 @@ public class University {
 		return Name;
 	}
 
-	public URL getWikipedia_URL() {
-		return Wikipedia_URL;
+	public String getWikipedia_URL() {
+		return WikipediaURL;
 	}
 
-	public URL getWebsite_URL() {
-		return Website_URL;
+	public String getWebsite_URL() {
+		return WebsiteURL;
 	}
 }

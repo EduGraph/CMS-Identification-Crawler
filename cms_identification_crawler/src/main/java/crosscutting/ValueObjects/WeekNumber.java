@@ -1,4 +1,4 @@
-package crosscutting.DataValues;
+package crosscutting.ValueObjects;
 
 import java.util.Calendar;
 

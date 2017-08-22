@@ -3,15 +3,15 @@ package write.UniversityCrawler.Business.Commands;
 import java.util.Calendar;
 import java.util.Date;
 
-import crosscutting.DataValues.Semester;
+import crosscutting.ValueObjects.SemesterValueObject;
 import crosscutting.command.ICommand;
 
 public class StartNewSemester implements ICommand{
 	private String name;
 	private Date createTime;
 
-	public StartNewSemester(Calendar calendar) {
-		Semester newSemester = new Semester(calendar);
+	public StartNewSemester() {
+		SemesterValueObject newSemester = new SemesterValueObject(Calendar.getInstance());
 		this.setName(newSemester.name());
 		this.setCreateTime(newSemester.getCreateTime());
 	}
