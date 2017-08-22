@@ -57,10 +57,6 @@ public class UniversityCrawler implements IUniversityCrawler {
 		// Wikipedia-Seiten der Hochschulen laden
 		List<University> wikipages = this.crawlUniversityList();
 		
-		if (wikipages.isEmpty()) {
-			System.out.println("Fuck");
-		}
-		
 		// Die URLs der Hochschulen aus ihren Wikipeida-Seiten extrahieren
 		List<University> universities = 
 				 wikipages
