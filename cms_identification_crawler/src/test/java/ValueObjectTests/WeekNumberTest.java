@@ -4,13 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import static org.junit.Assert.assertEquals;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
-
-import crosscutting.DataValues.Semester;
-
 
 import crosscutting.DataValues.WeekNumber;
 
