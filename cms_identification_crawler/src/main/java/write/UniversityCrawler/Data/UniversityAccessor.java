@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import crosscutting.data.BaseWriteDatabase;
 import write.UniversityCrawler.Business.Models.Semester;
+import write.UniversityCrawler.Business.Models.University;
 
 public class UniversityAccessor extends BaseWriteDatabase implements IUniversityAccessor {
 
@@ -39,5 +40,20 @@ public class UniversityAccessor extends BaseWriteDatabase implements IUniversity
 			}
 			
 		});
+	}
+
+	@Override
+	public void MatriculateUniversityToSemester(University university, Semester semester) {
+		if (university == null && semester == null) {
+			return;
+		}
+		
+		String sql = "INSERT INTO hochschule(Name, Website_URL, Wikipedia_URL, Semester_ID) VALUES(?, ?, ?, ?)";
+		this.JdbcTemplate.update
+			(sql, 
+			university.getName(), 
+			university.getWebsite_URL(), 
+			university.getWikipedia_URL(), 
+			semester.getId());
 	}
 }
