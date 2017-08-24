@@ -1,4 +1,4 @@
-package write.UniversityCrawler.Helper;
+package write.TimeEvents;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -9,15 +9,24 @@ import crosscutting.query.QueryResolver;
 import write.UniversityCrawler.Business.Models.Semester;
 import write.UniversityCrawler.Business.Queries.GetLastSemester;
 
-public class SemesterHelper implements ISemesterHelper{
+public class UniversityCrawlerTimer implements IUniversityCrawlerTimer {
 	private IQueryResolver queryResolver;
-	
-	public SemesterHelper() {
+
+	public UniversityCrawlerTimer() {
 		this.queryResolver = new QueryResolver();
 	}
-	
-	// Prüfen ob das im System als aktuelle Semester auch noch das tatsächlich aktuelle Semester ist
-	public boolean IsLastSemesterCurrentSemester() {
+
+	@Override
+	public boolean start() {
+		if (this.IsLastSemesterCurrentSemester()) {
+			return false; // Das aktuelle Semester wurde bereits erfasst
+		}
+		
+		return true; // Das aktuelle Semester wurde noch nicht erfasst
+	}
+
+	// Prüfen ob das im System aktuelle Semester auch noch das tatsächlich aktuelle Semester ist
+	private boolean IsLastSemesterCurrentSemester() {
 		Semester semester = (Semester)queryResolver.Resolve(new GetLastSemester());
 		if (semester == null) {
 			return false;

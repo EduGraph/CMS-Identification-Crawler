@@ -20,7 +20,7 @@ import write.UniversityCrawler.Business.Commands.StartNewSemester;
 import write.UniversityCrawler.Business.Models.Semester;
 import write.UniversityCrawler.Business.Models.University;
 import write.UniversityCrawler.Business.Queries.GetLastSemester;
-
+	
 public class UniversityCrawler implements IUniversityCrawler {
 	private static final String Wikipediabase = "https://de.wikipedia.org";
 	private static final String URLListOfAllGermanUniversities = "https://de.wikipedia.org/wiki/Liste_der_Hochschulen_in_Deutschland";
