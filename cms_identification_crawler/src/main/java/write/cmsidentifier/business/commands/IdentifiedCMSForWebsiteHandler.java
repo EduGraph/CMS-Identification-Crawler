@@ -1,12 +1,12 @@
-package write.cmsidentifier.commands;
+package write.cmsidentifier.business.commands;
 
 import java.util.Calendar;
 
 import crosscutting.ValueObjects.WeekNumberValueObject;
 import crosscutting.command.ICommandHandler;
+import write.cmsidentifier.business.models.CMSIdentifierResultsWithWeekNumber;
 import write.cmsidentifier.data.CMSIdentifierAccessor;
 import write.cmsidentifier.data.ICMSIdentifierAccessor;
-import write.cmsidentifier.models.CMSIdentifierResultsWithWeekNumber;
 
 public class IdentifiedCMSForWebsiteHandler implements ICommandHandler<IdentifiedCMSForWebsite>{
 	private ICMSIdentifierAccessor cmsIdentifierAccessor;

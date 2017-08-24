@@ -1,7 +1,7 @@
-package write.cmsidentifier.queries;
+package write.cmsidentifier.business.queries;
 
 import crosscutting.query.IQuery;
-import write.cmsidentifier.models.WeekNumber;
+import write.cmsidentifier.business.models.WeekNumber;
 
 public class GetLastWeekNumber implements IQuery<WeekNumber>{
 

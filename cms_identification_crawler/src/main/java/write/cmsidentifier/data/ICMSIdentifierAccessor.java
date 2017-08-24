@@ -1,7 +1,7 @@
 package write.cmsidentifier.data;
 
-import write.cmsidentifier.models.CMSIdentifierResultsWithWeekNumber;
-import write.cmsidentifier.models.Seeds;
+import write.cmsidentifier.business.models.CMSIdentifierResultsWithWeekNumber;
+import write.cmsidentifier.business.models.Seeds;
 
 public interface ICMSIdentifierAccessor {
 	Seeds GetSeeds();

@@ -1,9 +1,9 @@
-package write.cmsidentifier.queries;
+package write.cmsidentifier.business.queries;
 
 import crosscutting.query.IQueryHandler;
+import write.cmsidentifier.business.models.Seeds;
 import write.cmsidentifier.data.CMSIdentifierAccessor;
 import write.cmsidentifier.data.ICMSIdentifierAccessor;
-import write.cmsidentifier.models.Seeds;
 
 public class GetSeedsHandler implements IQueryHandler<GetSeeds, Seeds>{
 	ICMSIdentifierAccessor cmsidentifierAccessor;

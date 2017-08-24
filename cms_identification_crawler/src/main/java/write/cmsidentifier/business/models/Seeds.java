@@ -1,4 +1,4 @@
-package write.cmsidentifier.models;
+package write.cmsidentifier.business.models;
 
 import java.util.List;
 

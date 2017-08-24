@@ -51,7 +51,7 @@ public class UniversityCrawler implements IUniversityCrawler {
 		}
 		
 		// Neues Semester anlegen
-		this.commandResolver.handle(new StartNewSemester());
+		this.commandResolver.resolve(new StartNewSemester());
 		Semester semester = (Semester)this.queryResolver.Resolve(new GetLastSemester());
 		
 		// Wikipedia-Seiten der Hochschulen laden
@@ -65,7 +65,7 @@ public class UniversityCrawler implements IUniversityCrawler {
 				.collect(Collectors.toList());
 		
 		// Ergebnisse Speichern
-		universities.forEach(university -> this.commandResolver.handle(new MatriculateUniversityToSemester(university, semester)));
+		universities.forEach(university -> this.commandResolver.resolve(new MatriculateUniversityToSemester(university, semester)));
 	}
 
 	private List<University> crawlUniversityList() {

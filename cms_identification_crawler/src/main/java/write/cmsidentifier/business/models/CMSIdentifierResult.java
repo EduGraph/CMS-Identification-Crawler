@@ -1,12 +1,12 @@
-package write.cmsidentifier.models;
+package write.cmsidentifier.business.models;
 
 import crosscutting.ValueObjects.CMS;
 
-public class CMSIdentifierResults {
+public class CMSIdentifierResult {
 	private int identifier;
 	private CMS cms;
 
-	public CMSIdentifierResults(int identifier, CMS cms) {
+	public CMSIdentifierResult(int identifier, CMS cms) {
 		super();
 		this.identifier = identifier;
 		this.cms = cms;

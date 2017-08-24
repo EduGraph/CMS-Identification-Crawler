@@ -7,10 +7,10 @@ import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 
 import crosscutting.data.BaseWriteDatabase;
-import write.cmsidentifier.models.CMSIdentifierResults;
-import write.cmsidentifier.models.CMSIdentifierResultsWithWeekNumber;
-import write.cmsidentifier.models.Seed;
-import write.cmsidentifier.models.Seeds;
+import write.cmsidentifier.business.models.CMSIdentifierResult;
+import write.cmsidentifier.business.models.CMSIdentifierResultsWithWeekNumber;
+import write.cmsidentifier.business.models.Seed;
+import write.cmsidentifier.business.models.Seeds;
 
 public class CMSIdentifierAccessor extends BaseWriteDatabase implements ICMSIdentifierAccessor {
 	

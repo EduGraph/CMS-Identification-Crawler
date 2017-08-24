@@ -1,5 +1,5 @@
 package crosscutting.command;
 
 public interface ICommandResolver {
-	void handle(ICommand command);
+	void resolve(ICommand command);
 }

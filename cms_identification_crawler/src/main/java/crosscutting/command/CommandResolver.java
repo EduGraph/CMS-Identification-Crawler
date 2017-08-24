@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 public class CommandResolver implements ICommandResolver {
 
 	@Override
-	public void handle(ICommand command) {
+	public void resolve(ICommand command) {
 		String commandName = command.getClass().getName();
 		String commandHandlerName = commandName + "Handler";
 		try {

@@ -1,17 +1,17 @@
-package write.cmsidentifier.models;
+package write.cmsidentifier.business.models;
 
 public class Seed {
-	private int Id;
+	private int identifier;
 	private String url;
 
 	public Seed(int id, String url) {
 		super();
-		Id = id;
+		identifier = id;
 		this.url = url;
 	}
 
-	public int getId() {
-		return Id;
+	public int getIdentifier() {
+		return identifier;
 	}
 
 	public String getUrl() {
