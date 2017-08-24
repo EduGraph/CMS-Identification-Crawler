@@ -11,6 +11,7 @@ import write.cmsidentifier.business.models.CMSIdentifierResult;
 import write.cmsidentifier.business.models.CMSIdentifierResultsWithWeekNumber;
 import write.cmsidentifier.business.models.Seed;
 import write.cmsidentifier.business.models.Seeds;
+import write.cmsidentifier.business.models.WeekNumber;
 
 public class CMSIdentifierAccessor extends BaseWriteDatabase implements ICMSIdentifierAccessor {
 	
@@ -36,6 +37,13 @@ public class CMSIdentifierAccessor extends BaseWriteDatabase implements ICMSIden
 				results.getWeekNumber(),
 				results.getCMS(),
 				results.getIdentifier());
+	}
+
+	@Override
+	public WeekNumber GetLastWeekNumber() {
+		String sql = "select Kalenderwoche from woche where ID_Semester = (SELECT id FROM semester ORDER BY CreateTime DESC Limit 1) ORDER BY Kalenderwoche DESC LIMIT 1\r\n";
+		int result = this.JdbcTemplate.queryForObject(sql, Integer.class);
+		return new WeekNumber(result);
 	}
 
 }

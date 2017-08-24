@@ -20,8 +20,6 @@ import write.UniversityCrawler.Business.Commands.StartNewSemester;
 import write.UniversityCrawler.Business.Models.Semester;
 import write.UniversityCrawler.Business.Models.University;
 import write.UniversityCrawler.Business.Queries.GetLastSemester;
-import write.UniversityCrawler.Helper.ISemesterHelper;
-import write.UniversityCrawler.Helper.SemesterHelper;
 
 public class UniversityCrawler implements IUniversityCrawler {
 	private static final String Wikipediabase = "https://de.wikipedia.org";
@@ -31,25 +29,13 @@ public class UniversityCrawler implements IUniversityCrawler {
 	private ICommandResolver commandResolver;
 	private IQueryResolver queryResolver;
 	
-	private ISemesterHelper semesterHelper;
-	
-	
-	
 	public UniversityCrawler() {
 		this.commandResolver = new CommandResolver();
 		this.queryResolver = new QueryResolver();
-		this.semesterHelper = new SemesterHelper();
 	}
-
-
 
 	@Override
 	public void crawl() {
-		// Starte nur den Crawler, wenn ein neues Semester begonnen hat
-		if (this.semesterHelper.IsLastSemesterCurrentSemester()) {
-			return;
-		}
-		
 		// Neues Semester anlegen
 		this.commandResolver.resolve(new StartNewSemester());
 		Semester semester = (Semester)this.queryResolver.Resolve(new GetLastSemester());
