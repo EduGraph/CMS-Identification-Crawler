@@ -20,6 +20,10 @@ public class DrupalIdentifier implements ICMSIdentifier{
 		if (this.isDrupalFoundInJavaScriptSrc()) {
 			return CMS.Drupal;
 		}
+		
+		if (this.isMetaGeneratorTagFound()) {
+			return CMS.Drupal;
+		}
 		return CMS.UnbekanntesCMS;
 	}
 
@@ -29,5 +33,10 @@ public class DrupalIdentifier implements ICMSIdentifier{
 
 	private boolean isDrupalInJavaScriptInlineScript() {
 		return IdentifierHelper.FindSomethingInInlineJavaScript(site, "Drupal");
+	}
+	
+	private boolean isMetaGeneratorTagFound() {
+		String metaContent = IdentifierHelper.GetMetaGeneratorContent(this.site);
+		return metaContent != null && metaContent.contains("Drupal");
 	}
 }

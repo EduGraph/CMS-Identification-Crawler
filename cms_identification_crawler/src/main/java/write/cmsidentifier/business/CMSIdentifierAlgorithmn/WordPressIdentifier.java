@@ -22,4 +22,9 @@ public class WordPressIdentifier implements ICMSIdentifier {
 	private boolean isWp_contentFoundInHref() {
 		return IdentifierHelper.FindSometingInHref(this.site, "wp-content");
 	}
+	
+	private boolean isMetaGeneratorTagFound() {
+		String metaContent = IdentifierHelper.GetMetaGeneratorContent(this.site);
+		return metaContent != null && metaContent.contains("WordPress");
+	}
 }

@@ -6,6 +6,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import crosscutting.ValueObjects.CMS;
+import write.cmsidentifier.business.helper.IdentifierHelper;
 import write.cmsidentifier.business.models.Site;
 
 public class ImperiaIdentifier implements ICMSIdentifier {
@@ -41,5 +42,10 @@ public class ImperiaIdentifier implements ICMSIdentifier {
 		}
 		
 		return false;
+	}
+	
+	private boolean isMetaGeneratorTagFound() {
+		String metaContent = IdentifierHelper.GetMetaGeneratorContent(this.site);
+		return metaContent != null && metaContent.contains("IMPERIA");
 	}
 }

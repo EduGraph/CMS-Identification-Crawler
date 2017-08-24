@@ -49,10 +49,36 @@ public class CMSIdentifierCrawler implements ICMSIdentifierCrawler {
 			return new CMSIdentifierResult(seed.getIdentifier(), null);
 		}
 		
-		ICMSIdentifier identifier = new CMSIdentifier(new ContanoIdentifier(site), new DrupalIdentifier(site),
-				new EgotecIdentifier(site), new ExpressionEngineIdentifier(site), new ImperiaIdentifier(site),
-				new OpenCMSIdentifier(site), new ProcessWireIdentifier(site), new PyroCmsIdentifier(site),
-				new SharePointIdentifier(site), new Typo3Identifier(site), new WordPressIdentifier(site));
+		ICMSIdentifier identifier = 
+				new CMSIdentifier(new ContanoIdentifier(site), 
+				new CabacosIdentifier(site),
+				new ContanoIdentifier(site),
+				new DrupalIdentifier(site),
+				new EgotecIdentifier(site), 
+				new ExpressionEngineIdentifier(site),
+				new FionaIdentifier(site),
+				new FirstSpiritIdentifierIdentifier(site),
+				new FramulaIdentifier(site),
+				new GoettingerContentManagementSystemIdentifier(site),
+				new IcoyaIdentifier(site),
+				new ImperiaIdentifier(site),
+				new Ionas3Identifier(site),
+				new JoomlaIdentifier(site),
+				new KrynIdentifier(site),
+				new LarissaIdentifier(site),
+				new MaGICIdentifier(site),
+				new OpenCMSIdentifier(site),
+				new PloneIdentifier(site),
+				new ProcessWireIdentifier(site), 
+				new PyroCmsIdentifier(site),
+				new SharePointIdentifier(site), 
+				new Typo3Identifier(site),
+				new WebBoxIdentifier(site),
+				new WeblicationIdentifier(site),
+				new WebVanillaIdentifier(site),
+				new WordPressIdentifier(site),
+				new XIMSIdentifier(site),
+				new ZMSIdentifier(site));
 		return new CMSIdentifierResult(seed.getIdentifier(), identifier.identify());
 	}
 

@@ -1,6 +1,7 @@
 package write.cmsidentifier.business.CMSIdentifierAlgorithmn;
 
 import crosscutting.ValueObjects.CMS;
+import write.cmsidentifier.business.helper.IdentifierHelper;
 import write.cmsidentifier.business.models.Site;
 
 public class ContanoIdentifier implements ICMSIdentifier {
@@ -15,6 +16,10 @@ public class ContanoIdentifier implements ICMSIdentifier {
 		if (this.containsContanoComment()) {
 			return CMS.Contano;
 		}
+		
+		if (this.isMetaGeneratorTagFound()) {
+			return CMS.Contano;
+		}
 		return CMS.UnbekanntesCMS;
 	}
 
@@ -24,5 +29,10 @@ public class ContanoIdentifier implements ICMSIdentifier {
 		
 		return this.site.getHtml().contains(continueComment) ||
 			   this.site.getHtml().contains(stopComment);
+	}
+	
+	private boolean isMetaGeneratorTagFound() {
+		String metaContent = IdentifierHelper.GetMetaGeneratorContent(this.site);
+		return metaContent != null && metaContent.contains("Contao");
 	}
 }

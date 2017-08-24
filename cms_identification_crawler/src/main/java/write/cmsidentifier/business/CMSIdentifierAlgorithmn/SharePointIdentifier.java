@@ -1,6 +1,7 @@
 package write.cmsidentifier.business.CMSIdentifierAlgorithmn;
 
 import crosscutting.ValueObjects.CMS;
+import write.cmsidentifier.business.helper.IdentifierHelper;
 import write.cmsidentifier.business.models.Site;
 
 public class SharePointIdentifier implements ICMSIdentifier {
@@ -13,6 +14,10 @@ public class SharePointIdentifier implements ICMSIdentifier {
 	public CMS identify() {
 		if (this.isSharePointCommentFound()) {
 			return CMS.SharePoint;
+		}
+		
+		if (this.isMetaGeneratorTagFound()) {
+			
 		}
 		return CMS.UnbekanntesCMS;
 	}
@@ -28,5 +33,10 @@ public class SharePointIdentifier implements ICMSIdentifier {
 	
 	private boolean containsComment(String comment){
 		return this.site.getHtml().contains(comment);
+	}
+	
+	private boolean isMetaGeneratorTagFound() {
+		String metaContent = IdentifierHelper.GetMetaGeneratorContent(this.site);
+		return metaContent != null && metaContent.contains("SharePoint");
 	}
 }

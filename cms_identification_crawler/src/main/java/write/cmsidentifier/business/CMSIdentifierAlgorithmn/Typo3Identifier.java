@@ -41,6 +41,10 @@ public class Typo3Identifier implements ICMSIdentifier {
 			return CMS.Typo3;
 		}
 		
+		if (this.isMetaGeneratorTagFound()) {
+			return CMS.Typo3;
+		}
+		
 		return CMS.UnbekanntesCMS;
 	}
 	
@@ -67,5 +71,10 @@ public class Typo3Identifier implements ICMSIdentifier {
 				  " -->";
 		
 		return this.site.getHtml().contains(typo3Comment);
+	}
+	
+	private boolean isMetaGeneratorTagFound() {
+		String metaContent = IdentifierHelper.GetMetaGeneratorContent(this.site);
+		return metaContent != null && metaContent.contains("TYPO3");
 	}
 }
