@@ -2,10 +2,10 @@ package crosscutting.ValueObjects;
 
 import java.util.Calendar;
 
-public class WeekNumber {
+public class WeekNumberValueObject {
 	private int weeknumber;
 	
-	public WeekNumber(Calendar calendar) {
+	public WeekNumberValueObject(Calendar calendar) {
 		this.setWeekNumber(calendar);
 	}
 

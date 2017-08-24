@@ -1,5 +1,7 @@
 package read.frontend.presentation.Models;
 
+import crosscutting.ValueObjects.CMS;
+
 public class CMSAnzahl {
 	private CMS cms;
 	private int anzahl;

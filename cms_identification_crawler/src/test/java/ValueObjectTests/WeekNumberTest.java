@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import crosscutting.ValueObjects.WeekNumber;
+import crosscutting.ValueObjects.WeekNumberValueObject;
 
 public class WeekNumberTest {
 	@Test
@@ -15,7 +15,7 @@ public class WeekNumberTest {
 		Calendar calendar = new GregorianCalendar(2017, Calendar.AUGUST, 22);
 		
 		// Act
-		WeekNumber weeknumber = new WeekNumber(calendar);
+		WeekNumberValueObject weeknumber = new WeekNumberValueObject(calendar);
 		
 		// Assert
 		assertEquals(34, weeknumber.get());

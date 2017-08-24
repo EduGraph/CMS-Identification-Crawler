@@ -1,5 +1,7 @@
 package read.frontend.presentation.Models;
 
+import crosscutting.ValueObjects.CMS;
+
 public class VeraenderungWoche {
 	private CMS cms;
 	private int veraenderung;

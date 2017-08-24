@@ -1,5 +1,7 @@
 package read.frontend.presentation.Models;
 
+import crosscutting.ValueObjects.CMS;
+
 public class HochschuleCMS {
 	private String Hochschule;
 	private CMS verwendetesCMS;

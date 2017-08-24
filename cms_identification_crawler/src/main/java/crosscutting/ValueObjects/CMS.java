@@ -1,4 +1,4 @@
-package read.frontend.presentation.Models;
+package crosscutting.ValueObjects;
 
 public enum CMS {
 	Contano, Drupal, Egotec, ExpressionEngine, Imperia, OpenCMS, ProcessWire, PyroCMS, UnbekanntesCMS, SharePoint, Typo3, WordPress;

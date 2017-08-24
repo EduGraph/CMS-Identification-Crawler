@@ -8,9 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import crosscutting.ValueObjects.CMS;
 import crosscutting.data.BaseReadDatabase;
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
-import read.frontend.presentation.Models.CMS;
 import read.frontend.presentation.Models.CMSAnzahl;
 import read.frontend.presentation.Models.CMSDerHochschulen;
 import read.frontend.presentation.Models.HochschuleCMS;
