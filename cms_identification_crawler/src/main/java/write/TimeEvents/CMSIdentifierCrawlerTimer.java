@@ -26,6 +26,9 @@ public class CMSIdentifierCrawlerTimer implements ICMSIdentifierCrawlerTimer {
 	
 	private boolean actualWeekNumberIsSystemWeekNumber() {
 		WeekNumber currentSystemWeekNumber = (WeekNumber)queryResolver.Resolve(new GetLastWeekNumber());
+		if (currentSystemWeekNumber == null) {
+			return false;
+		}
 		WeekNumberValueObject actualWeekNumber = new WeekNumberValueObject(Calendar.getInstance());
 		return currentSystemWeekNumber.getNumber() == actualWeekNumber.get();
 	}

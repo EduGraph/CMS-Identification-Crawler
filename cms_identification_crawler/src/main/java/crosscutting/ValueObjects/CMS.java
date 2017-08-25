@@ -9,7 +9,7 @@ public enum CMS {
 	Fiona, 
 	FirstSpirit, 
 	Framula, 
-	GCMS, 
+	GoettingerCMS, 
 	Icoya, 
 	Imperia, 
 	Ionas3, 
@@ -54,8 +54,8 @@ public enum CMS {
 			return "FirstSpirit";
 		case Framula:
 			return "Framula";
-		case GCMS:
-			return "Göttinger Content Management System";
+		case GoettingerCMS:
+			return "GoettingerCMS";
 		case Icoya:
 			return "Icoya";
 		case Imperia:
@@ -77,13 +77,13 @@ public enum CMS {
 		case ProcessWire:
 			return "ProcessWire";
 		case PyroCMS:
-			return "Pyro CMS";
+			return "PyroCMS";
 		case SharePoint:
 			return "SharePoint";
 		case Typo3:
 			return "Typo3";
 		case UnbekanntesCMS:
-			return "Unbekanntes CMS";
+			return "UnbekanntesCMS";
 		case WebBox:
 			return "WebBox";
 		case Weblication:
@@ -95,7 +95,7 @@ public enum CMS {
 		case ZMS:
 			return "ZMS";
 		default:
-			return "Unbekanntes CMS";
+			return "UnbekanntesCMS";
 		}
 	}
 }

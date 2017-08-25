@@ -14,7 +14,7 @@ public class GoettingerContentManagementSystemIdentifier implements ICMSIdentifi
 	@Override
 	public CMS identify() {
 		if (this.isMetaGeneratorTagFound()) {
-			return CMS.GCMS;
+			return CMS.GoettingerCMS;
 		}
 		return CMS.UnbekanntesCMS;
 	}
