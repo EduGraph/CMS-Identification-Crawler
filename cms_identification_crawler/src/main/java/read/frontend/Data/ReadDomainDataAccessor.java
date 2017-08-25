@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import crosscutting.ValueObjects.CMS;
-import crosscutting.data.BaseReadDatabase;
+import crosscutting.data.BaseDatabase;
 import read.frontend.presentation.Models.AnzahlDerVerwendetenCMS;
 import read.frontend.presentation.Models.CMSAnzahl;
 import read.frontend.presentation.Models.CMSDerHochschulen;
@@ -17,24 +17,24 @@ import read.frontend.presentation.Models.HochschuleCMS;
 import read.frontend.presentation.Models.VeraenderungAktuelleWoche;
 import read.frontend.presentation.Models.VeraenderungWoche;
 
-public class ReadDomainDataAccessor extends BaseReadDatabase implements IReadDomainDataAccessor{
+public class ReadDomainDataAccessor extends BaseDatabase implements IReadDomainDataAccessor{
 	@Override
 	public AnzahlDerVerwendetenCMS GetAnzahlDerVerwendetenCMS() {
-		String sql = "SELECT CMS, Anzahl FROM anzahlderverwendetencms";
+		String sql = "SELECT CMS, Anzahl FROM read_anzahlderverwendetencms";
 		List<CMSAnzahl> cmsVerbreitung = this.JdbcTemplate.query(sql, new CMSAnzahlCMSMapper());
 		return new AnzahlDerVerwendetenCMS(cmsVerbreitung);
 	}
 
 	@Override
 	public CMSDerHochschulen GetCMSDerHochschulen() {
-		String sql = "SELECT Hochschule, CMS FROM cmsderhochschulen";
+		String sql = "SELECT Hochschule, CMS FROM read_cmsderhochschulen";
 		List<HochschuleCMS> cmsDerHochschulen = this.JdbcTemplate.query(sql, new HochschuleCMSMapper());
 		return new CMSDerHochschulen(cmsDerHochschulen);
 	}
 	
 	@Override
 	public VeraenderungAktuelleWoche GetVeraenderungAktulleWoche() {
-		String sql = "SELECT CMS, Veraenderung FROM veraenderungaktuellewoche";
+		String sql = "SELECT CMS, Veraenderung FROM read_veraenderungaktuellewoche";
 		List<VeraenderungWoche> veraenderungWoche = this.JdbcTemplate.query(sql, new VeraenderungWocheMapper());
 		return new VeraenderungAktuelleWoche(veraenderungWoche);
 	}

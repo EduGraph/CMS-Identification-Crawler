@@ -3,9 +3,11 @@ package write.cmsidentifier.business;
 import org.jsoup.Jsoup;
 
 import crosscutting.command.CommandResolver;
+import crosscutting.command.ICommand;
 import crosscutting.command.ICommandResolver;
 import crosscutting.query.IQueryResolver;
 import crosscutting.query.QueryResolver;
+import sync.commands.SynchronizeRead;
 import write.cmsidentifier.business.CMSIdentifierAlgorithmn.*;
 import write.cmsidentifier.business.commands.IdentifiedCMSForWebsite;
 import write.cmsidentifier.business.helper.SiteParser;
@@ -32,6 +34,10 @@ public class CMSIdentifierCrawler implements ICMSIdentifierCrawler {
 			.stream()
 			.map(seed -> new IdentifiedCMSForWebsite(identifyCMS(seed)))
 			.forEach(command -> commandResolver.resolve(command));
+		
+		// Lesende Domaine synchronisieren
+		ICommand command = new SynchronizeRead();
+		commandResolver.resolve(command);
 	}
 
 	private CMSIdentifierResult identifyCMS(Seed seed) {

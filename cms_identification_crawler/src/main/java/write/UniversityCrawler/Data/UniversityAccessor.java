@@ -8,11 +8,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
-import crosscutting.data.BaseWriteDatabase;
+import crosscutting.data.BaseDatabase;
 import write.UniversityCrawler.Business.Models.Semester;
 import write.UniversityCrawler.Business.Models.University;
 
-public class UniversityAccessor extends BaseWriteDatabase implements IUniversityAccessor {
+public class UniversityAccessor extends BaseDatabase implements IUniversityAccessor {
 
 	@Override
 	public void CreateSemester(Semester semester) {
@@ -20,7 +20,7 @@ public class UniversityAccessor extends BaseWriteDatabase implements IUniversity
 			return;
 		}
 
-		String sql = "INSERT INTO semester(Name, CreateTime) VALUES(?, ?)";
+		String sql = "INSERT INTO write_semester(Name, CreateTime) VALUES(?, ?)";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String createTime = sdf.format(semester.getCreateDate());
 		this.JdbcTemplate.update(sql, semester.getName(), createTime);
@@ -28,7 +28,7 @@ public class UniversityAccessor extends BaseWriteDatabase implements IUniversity
 
 	@Override
 	public Semester GetLastSemester() {
-		String sql = "SELECT id, name, createtime FROM semester ORDER BY CreateTime DESC Limit 1";
+		String sql = "SELECT id, name, createtime FROM write_semester ORDER BY CreateTime DESC Limit 1";
 		return (Semester) this.JdbcTemplate.query(sql, new ResultSetExtractor<Semester>() {
 
 			@Override
@@ -48,7 +48,7 @@ public class UniversityAccessor extends BaseWriteDatabase implements IUniversity
 			return;
 		}
 		
-		String sql = "INSERT INTO hochschule(Name, Website_URL, Wikipedia_URL, Semester_ID) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO write_hochschule(Name, Website_URL, Wikipedia_URL, Semester_ID) VALUES(?, ?, ?, ?)";
 		this.JdbcTemplate.update
 			(sql, 
 			university.getName(), 
